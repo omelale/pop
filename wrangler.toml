@@ -1,12 +1,32 @@
+# OpenNext Cloudflare configuration
+#
+# Build:       npm run open:build        (invokes `opennextjs-cloudflare build`)
+# Preview:     npm run preview           (invokes `opennextjs-cloudflare preview`)
+# Deploy:      npm run deploy            (invokes `opennextjs-cloudflare build`
+#                                        + `wrangler pages deploy`)
+#
+# You can also deploy straight from the Cloudflare Pages dashboard by
+# connecting this repo and pointing the build to the OpenNext output:
+#   OPEN_NEXT_CLOUDFLARE=true npm run build
+# or in the Pages UI:
+#   Build command:    npx opennextjs-cloudflare build
+#   Build output dir: .open-next/cloudflare
+
 name = "pop-bistro"
-compatibility_date = "2024-08-06"
+compatibility_date = "2026-07-15"
 compatibility_flags = ["nodejs_compat"]
 
-# Uncomment and set to deploy to a custom domain
+# Required by wrangler to recognize this as a Pages project.
+# The directory is produced by `opennextjs-cloudflare build` (see npm run open:build).
+pages_build_output_dir = ".open-next/cloudflare"
+
+# === Optional environment variables ==========================================
+# Set real values via `wrangler secret put VAR_NAME` or dashboard → Settings.
+# [vars]
+# NEXT_PUBLIC_SITE_URL = "https://popbistro.al"
+
+# === Optional routes ========================================================
+# Uncomment to deploy under a custom domain (e.g. popbistro.al).
 # routes = [
 #   { pattern = "popbistro.al", custom_domain = true }
 # ]
-
-# Example environment variables (set real values via `wrangler secret put` or dashboard)
-# [vars]
-# NEXT_PUBLIC_SITE_URL = "https://popbistro.al"
