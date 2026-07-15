@@ -1,0 +1,12 @@
+name = "pop-bistro"
+compatibility_date = "2024-08-06"
+compatibility_flags = ["nodejs_compat"]
+
+# Uncomment and set to deploy to a custom domain
+# routes = [
+#   { pattern = "popbistro.al", custom_domain = true }
+# ]
+
+# Example environment variables (set real values via `wrangler secret put` or dashboard)
+# [vars]
+# NEXT_PUBLIC_SITE_URL = "https://popbistro.al"

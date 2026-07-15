@@ -1,0 +1,122 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display: "Fraunces", serif;
+  --font-body: "Inter", sans-serif;
+
+  --terracotta: #c1503b;
+  --cream: #f4eee1;
+  --ink: #1a1512;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  background-color: var(--cream);
+  color: var(--ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ------------------------------------------
+   Custom utility classes & component styles
+   ------------------------------------------ */
+
+@layer components {
+  .container-pop {
+    @apply mx-auto w-full max-w-7xl px-6 md:px-10 lg:px-16;
+  }
+
+  .eyebrow {
+    @apply mb-4 inline-block text-xs uppercase tracking-[0.35em] text-terracotta;
+    font-family: var(--font-body);
+  }
+
+  .heading-display {
+    font-family: var(--font-display);
+    @apply font-bold leading-[1.05];
+  }
+
+  .link-underline {
+    @apply relative inline-block;
+  }
+
+  .link-underline::after {
+    content: "";
+    @apply absolute -bottom-0.5 left-0 h-[2px] w-full origin-left scale-x-0 bg-current transition-transform duration-300;
+  }
+
+  .link-underline:hover::after {
+    @apply scale-x-100;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-full bg-ink px-5 py-2.5 text-[11px] uppercase tracking-[0.2em] text-cream transition-colors duration-300 hover:bg-terracotta md:text-xs;
+  }
+
+  .btn-cream {
+    @apply inline-flex items-center justify-center rounded-full bg-cream px-5 py-2.5 text-[11px] uppercase tracking-[0.2em] text-ink transition-colors duration-300 hover:bg-terracotta hover:text-cream md:text-xs;
+  }
+
+  .btn-outline-cream {
+    @apply inline-flex items-center justify-center rounded-full border border-cream px-5 py-2.5 text-[11px] uppercase tracking-[0.2em] text-cream transition-colors duration-300 hover:bg-cream hover:text-ink md:text-xs;
+  }
+
+  /* The hero motto gets a soft shadow so it reads over warm imagery at any size. */
+  .hero-motto {
+    text-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.55),
+      0 6px 24px rgba(0, 0, 0, 0.45);
+  }
+}
+
+/* Reduce-motion overrides */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Never leave the motto invisible — framer-motion delays respect reduced-motion. */
+  .hero-motto,
+  .hero-motto * {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* Custom scrollbar feat. our palette */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--cream);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--terracotta);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #a04231;
+}
