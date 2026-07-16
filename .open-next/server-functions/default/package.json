@@ -10,7 +10,7 @@
     "open:build": "opennextjs-cloudflare build",
     "preview": "opennextjs-cloudflare preview",
     "create:project": "wrangler pages project create pop-bistro --production-branch main",
-    "deploy": "opennextjs-cloudflare build && wrangler pages deploy .open-next/cloudflare --project-name pop-bistro"
+    "deploy": "opennextjs-cloudflare build && cp .open-next/worker.js .open-next/_worker.js && wrangler pages deploy .open-next --project-name pop-bistro"
   },
   "dependencies": {
     "framer-motion": "^11.3.0",
